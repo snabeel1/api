@@ -1,4 +1,3 @@
-pip install schedule qdrant-client sentence-transformers
 import uuid
 import time
 import schedule
@@ -295,7 +294,7 @@ def job():
     try:
         client.recreate_collection(
             collection_name=COLLECTION_NAME,
-            vectors_config=VectorParams(size=model.get_sentence_embedding_dimension(), distance=Distance.COSINE)
+            vectors_config=VectorParams(size=384, distance=Distance.COSINE)
         )
         print(f"Collection '{COLLECTION_NAME}' recreated.")
     except Exception as e:
