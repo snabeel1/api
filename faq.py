@@ -8,7 +8,7 @@ from sentence_transformers import SentenceTransformer
 def job():
     # ─── CONFIG ─────────────────────────────────────────────────────────
     # OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") # Not directly used for Qdrant ingestion with SentenceTransformer
-    COLLECTION_NAME = "info_collection"
+    COLLECTION_NAME = "FAQS_COLLCECTION"
     EMBED_MODEL_ID = "all-MiniLM-L6-v2"
     QDRANT_HOST = "localhost"
     QDRANT_PORT = 6333
