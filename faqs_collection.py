@@ -3,16 +3,14 @@ import time
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct, VectorParams, Distance
 from sentence_transformers import SentenceTransformer
+import re
+import unicodedata
 
-# --- CONFIG ---
-COLLECTION_NAME = "FAQS_COLLECTION" 
+COLLECTION_NAME = "FAQS_COLLECTION"
 EMBED_MODEL_ID = "all-MiniLM-L6-v2"
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333
 
-# --- CATEGORIZED FAQ DATA ---
-# This dictionary holds your FAQs, categorized by the topics you provided.
-# The new APIL GPT category is added at the beginning.
 CATEGORIZED_FAQ_DATA = {
     "APIL GPT Specific FAQs": [
         {"question": "How APIL GPT Works as a Game-Changer for Dubai Real Estate?", "answer": "APIL GPT redefines the Dubai real estate market by offering speed, precision, and 24/7 AI intelligence as an AI Property Assistant. It provides instant answers on off-plan projects, rental listings, and developer comparisons, making it Dubai’s #1 AI Chatbot for homebuyers, investors, and real estate agents."},
@@ -330,6 +328,38 @@ CATEGORIZED_FAQ_DATA = {
     ]
 }
 
+# Mapping for category slugs (as provided in your example)
+CATEGORY_SLUG_MAP = {
+    "Property Ownership": "ownership",
+    "Community Zones & Freehold Areas": "communities",
+    "Off-Plan Property Questions": "off-plan",
+    "Developer-Specific FAQs": "developers",
+    "Legal FAQs": "legal",
+    "Pricing & ROI": "prices",
+    "Rental & Property Management": "rental", # Assuming this would map to 'rental' or 'management'
+    "Property Buying Process": "buying-process", # Assuming this maps to something like 'buying-process'
+    "Visa, Tax & Inheritance": "visa-tax-inheritance", # Assuming a slug for this
+    "APIL GPT Specific FAQs": "apil-gpt" # Assuming a slug for this
+    # Add other categories as needed following your desired mapping
+}
+
+
+def generate_short_slug(text, max_words=5):
+    """
+    Generates a URL-friendly slug from the first few meaningful words of a text.
+    Removes common stop words and keeps the slug concise.
+    """
+    text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8')
+    text = re.sub(r'[^\w\s-]', '', text).strip().lower() # Remove special chars, strip, lowercase
+    words = [word for word in text.split() if word not in ["is", "the", "a", "an", "of", "in", "for", "to", "how", "what", "can", "are", "by", "what's", "do", "does", "or", "and", "vs", "which", "will", "are", "its"]]
+    
+    # Take only the first max_words, join by hyphen
+    short_slug = "-".join(words[:max_words])
+    
+    # Remove any lingering double hyphens or leading/trailing hyphens
+    short_slug = re.sub(r'[-\s]+', '-', short_slug).strip('-')
+    return short_slug
+
 def ingest_categorized_faq_data():
     try:
         print(f"Connecting to Qdrant at {QDRANT_HOST}:{QDRANT_PORT}...")
@@ -352,29 +382,39 @@ def ingest_categorized_faq_data():
             print(f"Collection '{COLLECTION_NAME}' created with vector size {vector_size} and Cosine distance.")
         else:
             print(f"Collection '{COLLECTION_NAME}' already exists. Deleting existing points for fresh ingestion.")
-            client.delete_collection(collection_name=COLLECTION_NAME) 
+            client.delete_collection(collection_name=COLLECTION_NAME) # Deletes it
             client.create_collection(
                 collection_name=COLLECTION_NAME,
                 vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE)
-            ) 
+            )
             print(f"Collection '{COLLECTION_NAME}' deleted and recreated for fresh ingestion.")
 
         texts_to_encode = []
-        points_to_upsert_payloads = [] 
+        points_to_upsert_payloads = [] # Store only payloads initially
 
         for category, faqs in CATEGORIZED_FAQ_DATA.items():
+            # Get the slug for the category
+            category_slug = CATEGORY_SLUG_MAP.get(category, generate_short_slug(category)) # Fallback to general slug if not mapped
+            
             for faq in faqs:
                 if not faq.get("question") or not faq.get("answer"):
                     print(f"Skipping malformed FAQ in category '{category}': {faq}")
                     continue
 
+                question_slug = generate_short_slug(faq["question"])
+
                 full_text = f"Category: {category}. Question: {faq['question']}. Answer: {faq['answer']}"
                 texts_to_encode.append(full_text)
+
+                full_url_slug = f"/questions/{category_slug}/{question_slug}"
 
                 payload = {
                     "question": faq["question"],
                     "answer": faq["answer"],
-                    "category": category 
+                    "category": category,
+                    "category_slug": category_slug, # Add category slug to payload
+                    "question_slug": question_slug, # Add short question slug to payload
+                    "full_url_slug": full_url_slug # Add the complete URL slug to payload
                 }
                 points_to_upsert_payloads.append(payload)
 
@@ -390,13 +430,12 @@ def ingest_categorized_faq_data():
         for i, payload in enumerate(points_to_upsert_payloads):
             points_to_upsert.append(
                 PointStruct(
-                    id=str(uuid.uuid4()), 
-                    vector=embeddings[i], 
-                    payload=payload 
+                    id=str(uuid.uuid4()), # Assigns a unique ID
+                    vector=embeddings[i], # Attaches the generated embedding
+                    payload=payload # Attaches the payload with all details including slugs
                 )
             )
 
-        # 4.7. 
         print(f"Upserting {len(points_to_upsert)} points to collection '{COLLECTION_NAME}'...")
         operation_info = client.upsert(
             collection_name=COLLECTION_NAME,
