@@ -165,19 +165,7 @@ CATEGORIZED_FAQ_DATA = {
         {"question": "What is the Ellington Palm Jumeirah?", "answer": "Ellington Properties has developed several luxury residences on Palm Jumeirah, including exquisite apartments and villas. Known for its elegant designs and high-quality construction, Ellington Palm Jumeirah offers a blend of contemporary living with state-of-the-art amenities, including fitness centers, swimming pools, and breathtaking views of the Dubai coastline. These properties are highly sought after by both residents and investors."},
         {"question": "What is the Royal Atlantis Resort & Residences?", "answer": "The Royal Atlantis Resort & Residences is a groundbreaking development on Palm Jumeirah. This luxury resort is home to exclusive residences and a five-star hotel. The residential component offers apartments, penthouses, and signature villas with breathtaking views of the Arabian Gulf. The resort features world-class dining, a spa, an infinity pool, and many more premium services. It is considered one of the most prestigious addresses in Dubai."},
         {"question": "What factors influence the cost of Palm Jumeirah villas?", "answer": "The cost of a villa on Palm Jumeirah is influenced by factors such as its size, location (whether it is on the fronds or the trunk), design, and proximity to key attractions like the Atlantis resort or the beach. Additionally, the age of the property and its unique features—such as private pools, gardens, or stunning views—will significantly impact the price. Luxury villas with modern architectural designs and top-tier amenities can fetch much higher prices than older properties."},
-        
-
-
-
-
-
-
-
         {"question": "What amenities are included in The Oasis By Emaar?", "answer": "Swimmable lagoons & private beaches, Jogging/cycling trails (54 km network), parks, Community centres: gyms, courts (tennis, padel, CrossFit), Dog parks, playgrounds, retail outlets, BBQ areas, Private pools, landscaped gardens, and smart-home features in villas."},
-        
-
-
-
     ],
     "Off-Plan Property Questions": [
         {"question": "What are off-plan properties?", "answer": "Off-plan properties are units bought before or during construction."},
@@ -252,10 +240,6 @@ CATEGORIZED_FAQ_DATA = {
         {"question": "Are more properties being built in Palm Jumeirah, and will it affect value?", "answer": "Despite continuous demand, Palm Jumeirah has *limited supply* due to its fixed geography. All land parcels are now either:*Fully developed*,*Mid-construction*.Or *held by investors/developers for exclusive future use*.This means:No risk of oversupply,*Property values remain stable or rising*,New launches are ultra-luxury only (e.g., Six Senses Residences, Ava at Palm).Palm Jumeirah is now a *mature, high-barrier luxury enclave*, not a speculative zone."},
         {"question": "Do Palm Jumeirah developers offer payment plans?", "answer": "Yes, especially on *off-plan and newly launched luxury projects*. Payment plans are typically:*Post-handover up to 3 years*,*50/50 or 60/40 split* (50% during construction, 50% after handover),* Developer or DLD-backed escrow protection.For ready properties, *mortgages from UAE banks* (up to 80% LTV for residents, 50% for non-residents) are also available.This flexibility helps buyers manage cash flow and increase leverage on trophy assets."},
         {"question": "How does Palm Jumeirah compare to other luxury waterfront areas?", "answer": "| Feature            | Palm Jumeirah         | Bluewaters Island | Dubai Marina | ------------------ | --------------------- | ----------------- | ------------------------- || *Exclusivity*    | Ultra-luxury, gated   | Boutique, premium | Mixed-use, urban          || *Beach Access*   | Private, direct       | Public + private  | Mostly public             || *Investment ROI* | High, stable          | Strong, growing   | Competitive, more supply  || *Lifestyle*      | Resort-style, private | Trendy, walkable  | Vibrant, high-rise living || *Price Point*    | AED 3–10K/sq.ft       | AED 3.5–8K/sq.ft  | AED 2.2–6K/sq.ft          |Palm Jumeirah stands out for *long-term prestige, **trophy assets, and **scarcity value*."},
-        
-
-
-
         {"question": "What is the launch date of Damac Islands phase 2", "answer": "DAMAC Islands is launched in numerous sub-communities (e.g., Costa Brava, Malta, Portofino), not one single Phase 2. New sub-phases are launched periodically by DAMAC Properties. There isn't one fixed Phase 2 launch date. Check APIL Properties or DAMAC for announcements on the latest phase launches."},
     ],
     "Developer-Specific FAQs": [
@@ -373,18 +357,6 @@ CATEGORIZED_FAQ_DATA = {
         {"question": "How much are service charges for Palm Jumeirah properties?", "answer": "Service fees vary by property type and community:*Shoreline Apartments*: AED 14–17 per sq.ft annually,*Luxury villas (Fronds)*: AED 4–6 per sq.ft (plus landscaping, maintenance extras),*Tiara/Oceana/Golden Mile*: AED 16–21 per sq.ft (premium services included). High fees reflect the *resort-level upkeep*, 24/7 concierge, valet, beach club access, and security.Buyers should *always factor service charges* into net ROI calculations."},
         {"question": "Are there marina facilities for yacht owners in Palm Jumeirah?", "answer": "bsolutely. Palm Jumeirah is one of Dubai’s *top destinations for yacht living*.Key options:*Palm Marina East & West* – Directly on the trunk, offering berths for 10–100+ foot vessels.*Atlantis Marina* – Ideal for superyacht access near the Crescent.*Club Vista Mare* – Popular for waterfront dining + small private vessels.Residents can dock their vessels near their home (in some villa communities) or join *yacht clubs* offering concierge, refueling, cleaning, and on-call captain services."},
         {"question": "Why might Grand Polo Club & Resort be a strong investment?", "answers": "Several factors make this stand out:*Limited supply* within a fixed masterplan—no risk of oversupply,*Premium positioning* (equestrian + elite sports lifestyle) attracts niche high-net-worth buyers,Backed by *Emaar*, a trusted developer, known to deliver major projects like Dubai Mall, Burj Khalifa,Strategic location amid Expo City, Al Maktoum Airport, and emerging Emaar communities ensures *long-term growth* ([grandclubresortdubai.com][2])."},
-        
-
-        
-
-
-
-
-
-
-
-
-    
         {"question": "Is Emirates Hills a good place to invest?", "answer": "Yes, it offers high capital appreciation and limited supply, making it a prime investment for ultra-luxury real estate in Dubai."},
  ],
     "Visa, Tax & Inheritance": [
@@ -411,9 +383,6 @@ CATEGORIZED_FAQ_DATA = {
         {"question": "What is the minimum property value to get a 10-year Golden Visa?", "answer": "AED 2 million. This can be a single property or multiple properties adding up to AED 2M."},
         {"question": "Can I apply for Golden Visa with a financed (mortgaged) property?", "answer": "Yes. You must provide a statement from the bank confirming the amount paid against the mortgage and an NOC from the bank."},
         {"question": "Does buying property in Palm Jumeirah grant UAE residency?", "answer": "Yes. Dubai’s real estate-linked visas make Palm Jumeirah purchases even more appealing.Visa tiers include:*2-year visa* – For property purchases over AED 750,000,*10-year Golden Visa* – For investments over AED 2 million,*Retirement Visa* – For over-55s with AED 1M in property and income/assets.The process is fast (2–6 weeks), and includes family sponsorship. Most developers and brokerages offer *visa assistance*."},
-        
-
-
         {"question": "What is the golden visa for Damac Island?", "answer": "Investing ≥AED 2M in DAMAC Islands qualifies you for the UAE's 10-year Golden Residence Visa. This long-term visa covers the investor, spouse, and children. It grants residency rights, stability, and access to services in the UAE. It's a key benefit for foreign property investors."},
     ],
     "Rental & Property Management": [
@@ -841,4 +810,5 @@ def ingest_categorized_faq_data():
 if __name__ == "__main__":
     ingest_categorized_faq_data()
     print("\nCategorized data ingestion complete.")
+
 
